@@ -26,7 +26,7 @@ export default function Login(){
         const userLoginData = {userName,password};
         const response = await loginUser(userLoginData)
         console.log('response is 123343.....',response)
-        if(response.status===true){
+        if(response.data.status===true){
             setMessage("User Logged In Successfully");
             setError('')
             navigate('/home');

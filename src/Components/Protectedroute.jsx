@@ -9,7 +9,7 @@ export default function ProtectedRoute({ children }) {
         console.log('useEffect triggered');
         async function checkSession() {
             const session = await getSession();
-            console.log('session is 213456789..',session);
+            console.log('protected route session is...',session);
             setIsAuthenticated(session.status);
         }
         checkSession();

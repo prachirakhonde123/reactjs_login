@@ -21,7 +21,7 @@ export async function loginUser(userLoginData){
             {withCredentials:true}
         );
         console.log('login data is..',apiResponse);
-        return apiResponse.data
+        return apiResponse
     }
     catch(error){
         throw error.message || "Error Occured"
@@ -32,8 +32,8 @@ export async function getSession() {
     const response = await axios.get('http://localhost:5000/api/user/session', {
         withCredentials: true,
     });
-    console.log('get session are 1221',response.data)
-    return response.data;
+    console.log('get session response ',response)
+    return response;
 }
 
 export async function logout() {
