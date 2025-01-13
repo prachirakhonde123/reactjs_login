@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { registerUserApi } from "../Apis/register"
 import { React } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function RegisterForm(){
     let [firstName,setFirstName] = useState('')
@@ -10,6 +11,7 @@ export default function RegisterForm(){
     let [email,setEmail] = useState('')
     let [message, setMessage] = useState('');
     let [error, setError] = useState('');
+    let navigate = useNavigate()
 
     function handleFisrtName(e){
         setFirstName(e.target.value)
@@ -45,6 +47,9 @@ export default function RegisterForm(){
             }else{
                 setMessage(response.message)
                 setError('')
+                setTimeout(() => {
+                    navigate('/sign-in')
+                }, 1000);
             }
            
             setTimeout(() => {
@@ -65,7 +70,7 @@ export default function RegisterForm(){
     return(
         <>
           <form onSubmit={handleSubmit} className="registration-form">
-          <h1 className="registerh1" style={{color:"green"}}>Register User</h1>
+          <h1 className="registerh1">Register User</h1>
 
             <div className="form-group">
              {/* <label className="label">First Name</label> */}
@@ -91,7 +96,7 @@ export default function RegisterForm(){
             </div>
 
             <button className="submit-button" type="submit">Submit</button>
-            {message && <p style={{color:"green"}}>{message}</p>}
+            {message && <p className="registerh1">{message}</p>}
             {error && <p style={{color:"red"}}>{error}</p>}
           </form> 
         </>

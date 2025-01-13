@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import {Routes,Route} from "react-router-dom"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
 import './App.css';
 import RegisterForm from './Pages/Register';
 import Login from "./Pages/Login";
@@ -26,6 +26,8 @@ function App() {
                   </ProtectedRoute>
               }
             />
+           <Route path="/logout" element={<Login />}/>
+
        </Routes>
     </Router>
   );

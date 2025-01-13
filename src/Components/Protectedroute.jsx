@@ -1,27 +1,12 @@
-import { Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getSession } from '../Apis/register';
+import React from 'react';
+// import { Navigate } from 'react-router-dom';
+import {Navigate} from 'react-router-dom'
+import { getToken } from './Session'; // Utility to get token
 
-export default function ProtectedRoute({ children }) {
-    const [isAuthenticated, setIsAuthenticated] = useState(null);
+const PrivateRoute = ({ children }) => {
+  const token = getToken();
+  console.log('token in private route is...',token)
+  return token ? children : <Navigate to="/sign-in" />;
+};
 
-    useEffect(() => {
-        console.log('useEffect triggered');
-        async function checkSession() {
-            const session = await getSession();
-            console.log('protected route session is...',session);
-            setIsAuthenticated(session.status);
-        }
-        checkSession();
-    }, []);
-
-    if (isAuthenticated === null) {
-        return <div>Loading...</div>;
-    }
-
-    if (!isAuthenticated) {
-        return <Navigate to="/sign-in" />;
-    }
-
-    return children;
-}
+export default PrivateRoute;

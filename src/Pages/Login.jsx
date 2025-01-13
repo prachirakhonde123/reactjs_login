@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { loginUser } from "../Apis/register";
-import { useNavigate } from "react-router-dom"; 
+// import { useNavigate } from "react-router-dom"; 
+import {useNavigate} from 'react-router-dom'
 
 export default function Login(){
 
@@ -19,6 +20,7 @@ export default function Login(){
         setPassword(e.target.value)
     }
 
+
     async function handleLoginForm(e){
        try{
         e.preventDefault();
@@ -26,12 +28,13 @@ export default function Login(){
         const userLoginData = {userName,password};
         const response = await loginUser(userLoginData)
         console.log('response is 123343.....',response)
-        if(response.data.status===true){
+        if(response.data && response.data.status===true){
+            // console.log('User Logged In Successfully')
             setMessage("User Logged In Successfully");
             setError('')
             navigate('/home');
         }else{
-            setError(response.error || 'Failed to Login')
+            setError(response.data.message || "Invalid Credentials")
             setMessage('')
         }
 
@@ -41,6 +44,7 @@ export default function Login(){
             setMessage('')
             setError('')
         }, 2000);
+
        }
        catch(error){
             setError(error.message)
@@ -51,7 +55,7 @@ export default function Login(){
      return(
         <>
         <form onSubmit={handleLoginForm} className="registration-form">
-            <h1 style={{color:"green"}}>Sign In</h1>
+            <h1 className="registerh1">Sign In</h1>
             <div className="form-group">
                <input className="input-field" type="text" required value={userName} placeholder="Enter User Name" onChange={handleUserName}/>
             </div>
@@ -61,9 +65,10 @@ export default function Login(){
             </div>
 
             <button className="submit-button" type="submit">Submit</button>
-            {message && <p style={{color:"green"}}>{message}</p>}
-            {error && <p style={{color:"red"}}>{error}</p>}
+            {message && <p className="registerh1">{message}</p>}
+            {error && <p className="error_msg">{error}</p>}
         </form>
+        <button >Logout User</button>
         </>
      )  
 }
