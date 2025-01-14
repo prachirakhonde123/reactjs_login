@@ -20,6 +20,11 @@ export default function Login(){
         setPassword(e.target.value)
     }
 
+    function handleSignIn(e){
+         e.preventDefault()
+         navigate('/register')
+    }
+
 
     async function handleLoginForm(e){
        try{
@@ -29,10 +34,9 @@ export default function Login(){
         const response = await loginUser(userLoginData)
         console.log('response is 123343.....',response)
         if(response.data && response.data.status===true){
-            // console.log('User Logged In Successfully')
             setMessage("User Logged In Successfully");
             setError('')
-            navigate('/home');
+            navigate('/');
         }else{
             setError(response.data.message || "Invalid Credentials")
             setMessage('')
@@ -65,10 +69,11 @@ export default function Login(){
             </div>
 
             <button className="submit-button" type="submit">Submit</button>
+            <p className="bottom-btn" onClick={handleSignIn}>Sign Up / Register</p>
+
             {message && <p className="registerh1">{message}</p>}
             {error && <p className="error_msg">{error}</p>}
         </form>
-        <button >Logout User</button>
         </>
      )  
 }

@@ -33,6 +33,11 @@ export default function RegisterForm(){
         setPassword(e.target.value)
     }
 
+    function handleLogin(e){
+          e.preventDefault()
+          navigate('/sign-in')
+    }
+
     async function handleSubmit(e){
         e.preventDefault();
 
@@ -41,11 +46,11 @@ export default function RegisterForm(){
         try{
             const response = await registerUserApi(userData)
             console.log('response',response);
-            if(response.message === "Username is already used"){
-                setError('Username is already used')
+            if(response.data.status === false){
+                setError(response.data.message)
                 setMessage('')
             }else{
-                setMessage(response.message)
+                setMessage(response.data.message)
                 setError('')
                 setTimeout(() => {
                     navigate('/sign-in')
@@ -59,6 +64,7 @@ export default function RegisterForm(){
                 setPassword('')
                 setUserName('')
                 setMessage('')   
+                setError('')   
             }, 2000);
         }
         catch(error){
@@ -96,8 +102,9 @@ export default function RegisterForm(){
             </div>
 
             <button className="submit-button" type="submit">Submit</button>
+            <p className="bottom-btn" onClick={handleLogin}>Sign In / Login</p>
             {message && <p className="registerh1">{message}</p>}
-            {error && <p style={{color:"red"}}>{error}</p>}
+            {error && <p className="error_msg">{error}</p>}
           </form> 
         </>
     )

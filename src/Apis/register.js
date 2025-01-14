@@ -8,7 +8,7 @@ export async function registerUserApi(userData){
     try{
         const apiResponse = await axios.post(`${BASE_URL}/api/user/register`,userData);
         console.log('api response data is..',apiResponse);
-        return apiResponse.data
+        return apiResponse
     }
     catch(error){
         throw error.response?.data || error.message || 'An error occurred';

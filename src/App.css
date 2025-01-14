@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+}
+
 .App {
   text-align: center;
 }
@@ -38,12 +44,13 @@
 }
 
 body {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: center; */
+  height: 100%;
+  width: 100%; 
   margin: 0;
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; 
 }
 
 .registration-form {
@@ -140,6 +147,34 @@ body {
   text-align: center;
   color : red;
   font-weight: 400;
+  margin-top: 7px;
 }
+
+.bottom-btn{
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.bottom-btn:hover{
+  color: blue;
+  /* width: 100%; */
+}
+
+
+.homepage {
+  /* margin-top: 20px; */
+  /* background-image: url('./Images/images.jpg'); */
+  /* height : 1000%;
+  width: 100%; */
+  background-color: #c7c6c6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+
 
 
