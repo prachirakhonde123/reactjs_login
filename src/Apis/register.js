@@ -31,12 +31,6 @@ export async function loginUser(userLoginData){
         
         return apiResponse
 
-        // else{
-        //      return {
-        //         status : false,
-        //         error : "User Not Found"
-        //      }
-        // }
 
     }
     catch(error){
@@ -44,17 +38,3 @@ export async function loginUser(userLoginData){
     }
 }
 
-// export async function getSession() {
-//     const response = await axios.get('http://localhost:5000/api/user/session', {
-//         withCredentials: true,
-//     });
-//     console.log('get session response ',response)
-//     return response;
-// }
-
-export async function logout() {
-    const response = await axios.get(`${BASE_URL}/api/user/logout`, {
-        withCredentials: true,
-    });
-    return response.data;
-}

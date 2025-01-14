@@ -10,7 +10,7 @@ function ButtonLink(){
           if(user===null){
               setTimeout(() => {
                   navigate('/sign-in');
-              }, 2000);
+              }, 1000);
           }
       } 
     return(
