@@ -14,7 +14,7 @@ export default function HomePage(){
     return(
         <>
           <div className='homepage'>
-            <h1>Welcome to Home : {user.username}</h1>
+            <h1>Welcome {user.firstName} {user.lastName}</h1>
             <h2>You are learning React Js</h2>
             {/* <h2>User Is : {user}</h2> */}
             <img
