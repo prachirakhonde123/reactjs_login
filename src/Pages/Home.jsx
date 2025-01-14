@@ -1,5 +1,4 @@
-// import { Navigate } from 'react-router-dom';
-import {Navigate, useNavigate} from 'react-router-dom'
+import {Navigate} from 'react-router-dom'
 import { getSessionUser } from '../Components/Session';
 import Image1 from '../Images/images.jpg'
 
@@ -19,7 +18,7 @@ export default function HomePage(){
             {/* <h2>User Is : {user}</h2> */}
             <img
                src={Image1}
-               alt="XYZ"
+               alt={user.userName}
             />
             </div>
 
