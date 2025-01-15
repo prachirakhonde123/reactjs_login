@@ -27,11 +27,8 @@ export async function loginUser(userLoginData){
         if(apiResponse && apiResponse.data && apiResponse.data.status === true){
              const token = apiResponse.data.access_token;
              setSession(token)    
-        }
-        
+        }        
         return apiResponse
-
-
     }
     catch(error){
         throw error.message || "Error Occured"

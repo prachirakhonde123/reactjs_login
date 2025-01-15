@@ -4,6 +4,7 @@ export const setSession = (token) => {
     if (token) {
       sessionStorage.setItem('jwtToken', token);
       const user = jwtDecode(token);
+      console.log('user is....',user)
       sessionStorage.setItem('user', JSON.stringify(user));
     } else {
       sessionStorage.removeItem('jwtToken');
@@ -14,6 +15,7 @@ export const setSession = (token) => {
 export const getSessionUser = () => {
    const user = sessionStorage.getItem('user');
    const userInfo = JSON.parse(user);
+   console.log('user is....',userInfo)
    return user ? userInfo : null;
 };
 
