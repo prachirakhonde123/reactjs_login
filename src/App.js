@@ -14,6 +14,8 @@ import AboutUs from './Pages/AboutUs';
 import ContactUs from './Pages/ContactUs';
 import WithNav from './Components/Navbar/WithNav';
 import WithoutNav from './Components/Navbar/WithoutNav';
+import ThankYouPage from './Pages/Thank-You';
+import ContactUsForm from './Pages/Contact-Us';
 
 function App() {
   return (
@@ -51,7 +53,8 @@ function App() {
         <Route element={<WithNav/>}>
             <Route path="/about-us" element={<AboutUs/>} />
             <Route path="/marketing" element={<Marketing/>} />
-            <Route path="/contact-us" element={<ContactUs/>} />
+            <Route path="/contact-us" element={<ContactUsForm/>} />
+            <Route path="/thank-you" element={<ThankYouPage/>} />
         </Route>
     </Routes>  
     </BrowserRouter>
