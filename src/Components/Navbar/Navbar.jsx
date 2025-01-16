@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as Icons from 'react-icons/fa';
 import './Navbar.css';
 import { NavItem } from "./NavItem";
 import ButtonLink from "./Button";
@@ -13,8 +12,7 @@ function Navbar(){
         <>
           <nav className="navbar">
             <Link to="/" className="navbar-logo">
-                NATURE
-                <Icons.FaTree/>
+                Welcome
             </Link>
             <ul className="nav-items">
                 {NavItem.map((item)=>{

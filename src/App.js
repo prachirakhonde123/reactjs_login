@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import {Routes,Route} from "react-router-dom"
-import {BrowserRouter as Router,Route,Routes, BrowserRouter, Navigate} from 'react-router-dom'
+import {Route,Routes, BrowserRouter} from 'react-router-dom'
 import './App.css';
 import RegisterForm from './Pages/Register';
 import Login from "./Pages/Login";
@@ -9,9 +9,8 @@ import ProtectedRoute from "./Components/Protectedroute";
 import Marketing from './Pages/Marketing';
 import PageNotFound from './Pages/Pagenotfound';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './Components/Navbar/Navbar'
+// import Navbar from './Components/Navbar/Navbar'
 import AboutUs from './Pages/AboutUs';
-import ContactUs from './Pages/ContactUs';
 import WithNav from './Components/Navbar/WithNav';
 import WithoutNav from './Components/Navbar/WithoutNav';
 import ThankYouPage from './Pages/Thank-You';
