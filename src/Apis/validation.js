@@ -9,5 +9,5 @@ export function OnlyText(evt){
     if (!(evt.which >= 65 &&  evt.which <= 93) && (evt.which <= 93 && evt.which <= 120) && (evt.which !== 32 && evt.which !== 8 && evt.which !== 9))
     {
         evt.preventDefault();
-    }
+    }   
 }
