@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import createContactUs from "../Apis/contactUsForm";
+import { OnlyNUmberKeys,OnlyText } from "../Apis/validation";
 
 export default function ContactUsForm(){
 
@@ -98,11 +99,11 @@ export default function ContactUsForm(){
           <form className="contactus-form" onSubmit={contactForm}>
               <h1 className="registerh1">Contact Us</h1>
               <div className="form-group">
-                  <input className="input-field" type="text" onChange={e=>handleChange('name',e.target.value)} value={fields['name']} placeholder="Enter Name"/>
+                  <input className="input-field" type="text" onChange={e=>handleChange('name',e.target.value)} onKeyDown={OnlyText} value={fields['name']}  placeholder="Enter Name"/>
                   <span className="error">{errors['name']}</span>
               </div>
               <div className="form-group">
-                  <input className="input-field" type="text" placeholder="Enter Mobile Number" onChange={e=>handleChange('phone',e.target.value)} value={fields['phone']}/>
+                  <input className="input-field" type="text" placeholder="Enter Mobile Number" maxLength={10} onChange={e=>handleChange('phone',e.target.value)} onKeyDown={OnlyNUmberKeys} value={fields['phone']}/>
                   <span className="error">{errors['phone']}</span>
               </div>
               <div className="form-group">
