@@ -1,10 +1,13 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import createContactUs from "../Apis/contactUsForm";
 
 export default function ContactUsForm(){
 
     const [fields, setFields] = useState({});
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate()
+
 
     function handleValidation(){
         let formFields = {...fields};
@@ -17,7 +20,7 @@ export default function ContactUsForm(){
         }
 
         if(formFields["name"]!==undefined){
-            if(!formFields["name"].match(/^[a-zA-Z]+$/)){
+            if(!formFields["name"].match(/[a-zA-Z ]$/)){
                 formIsValid = false;
                 formErrors["name"] = "Name must contain only letters";
             }
@@ -26,6 +29,20 @@ export default function ContactUsForm(){
         if(!formFields["phone"]){
             formIsValid = false;
             formErrors["phone"] = "Phone Number is required";
+        }
+
+        if(formFields["phone"]){
+            if(formFields["phone"].length < 10 || formFields["phone"].length > 10){
+                formIsValid = false;
+                formErrors["phone"] = "Phone Number must be of 10 digits"
+            }
+            if(formFields["phone"].length === 10){
+                if(!formFields["phone"].match(/^[0-9]{10}/)){
+                    formIsValid = false;
+                    formErrors["phone"] = "Invalid Phone Number";
+                }
+            }
+
         }
 
         if(!formFields['email']){
@@ -51,21 +68,36 @@ export default function ContactUsForm(){
         })
     }
 
-    function contactForm(e){
+    async function contactForm(e){
         e.preventDefault();
+        let formData = {
+            name : fields.name,
+            phone : fields.phone,
+            email : fields.email,
+            message : fields.message
+        }
+
         if(handleValidation()){
-            setTimeout(() => {
-                <Navigate to="/thank-you"/>
-            }, 1000);
-        }else{
-            alert('Form Has Errors')
+            let response = await createContactUs(formData)
+            console.log('api response is...',response)
+            console.log('api response is...',response.data.status)
+
+            if(response.data.status === true){
+                setTimeout(() => {
+                    navigate('/thank-you')
+                }, 1000);
+            }
+            else{
+                setFields({})
+                alert('Form has Error')
+            }           
         }
     }
  
 
     return(
         <>
-          <form className="registration-form" onSubmit={contactForm}>
+          <form className="contactus-form" onSubmit={contactForm}>
               <h1 className="registerh1">Contact Us</h1>
               <div className="form-group">
                   <input className="input-field" type="text" onChange={e=>handleChange('name',e.target.value)} value={fields['name']} placeholder="Enter Name"/>
