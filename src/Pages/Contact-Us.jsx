@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import createContactUs from "../Apis/contactUsForm";
 
@@ -79,8 +79,6 @@ export default function ContactUsForm(){
 
         if(handleValidation()){
             let response = await createContactUs(formData)
-            console.log('api response is...',response)
-            console.log('api response is...',response.data.status)
 
             if(response.data.status === true){
                 setTimeout(() => {
