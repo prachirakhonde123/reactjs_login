@@ -7,6 +7,8 @@ export default function ContactUsForm(){
 
     const [fields, setFields] = useState({});
     const [errors, setErrors] = useState({});
+    const [message,setMessage] = useState("");
+    const [error,setError] = useState("")
     const navigate = useNavigate()
 
 
@@ -82,6 +84,9 @@ export default function ContactUsForm(){
             let response = await createContactUs(formData)
 
             if(response.data.status === true){
+                setMessage("Form Submitted Successfully")
+                setFields({})
+                setError("")
                 setTimeout(() => {
                     navigate('/thank-you')
                 }, 1000);
@@ -114,6 +119,8 @@ export default function ContactUsForm(){
                   <textarea className="input-field" type="text" onChange={e=>handleChange('message',e.target.value)} placeholder="Enter Message"/>
               </div>
               <button className="submit-button" type="submit">Submit</button>
+              {message && <p className="registerh1">{message}</p>}
+              {error && <p className="error_msg">{error}</p>}
           </form>
         </>
     )
